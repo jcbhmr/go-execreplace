@@ -19,7 +19,7 @@ const windowsFALSE = 0
 var executing sync.Mutex
 
 var getCtrlcHandler = sync.OnceValue(func() uintptr {
-	return windows.NewCallback(func(ctrlType uint32) uint32 {
+	return windows.NewCallback(func(ctrlType uint32) uintptr {
 		return windowsTRUE
 	})
 })
