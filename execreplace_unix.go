@@ -7,12 +7,13 @@ import (
 	"syscall"
 )
 
-func execReplace(argv0 string, argv []string, envv []string) error {
+func execReplace(path string, argv []string, envv []string) error {
 	if argv == nil {
 		argv = os.Args
 	}
 	if envv == nil {
 		envv = os.Environ()
 	}
-	return syscall.Exec(argv0, argv, envv)
+	
+	return syscall.Exec(path, argv, envv)
 }

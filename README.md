@@ -1,4 +1,4 @@
-# `ExecReplace()` for Go
+# [`exec_replace()`](https://docs.rs/cargo-util/latest/cargo_util/struct.ProcessBuilder.html#method.exec_replace) for Go
 
 🏃 Use [`syscall.Exec`](https://pkg.go.dev/syscall#Exec) on Unix or an [`execve(2)`-like shim](https://github.com/jcbhmr/go-execreplace/blob/main/execreplace_windows.go) on Windows
 
@@ -40,3 +40,7 @@ go run ./main.go
 Hello from before ExecReplace!
 go version go1.25.4 windows/amd64
 ```
+
+## Development
+
+TODO: Use new `errors.AsType()` when widely available. https://antonz.org/accepted/errors-astype/
