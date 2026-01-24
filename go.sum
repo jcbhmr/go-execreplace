@@ -1,2 +1,4 @@
+github.com/jcbhmr/go-exec v1.0.0 h1:/3T09q88G5/HDscM+gT8ZqLI/SHiKgx59kfP1xLJdK4=
+github.com/jcbhmr/go-exec v1.0.0/go.mod h1:M2/K5vlGuEixRqazWM/a6j3cw5SjylX4Vrrm6zPtW0U=
 golang.org/x/sys v0.40.0 h1:DBZZqJ2Rkml6QMQsZywtnjnnGvHza6BTfYFWY9kjEWQ=
 golang.org/x/sys v0.40.0/go.mod h1:OgkHotnGiDImocRcuBABYBEXf8A9a87e/uXjp9XT3ks=

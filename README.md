@@ -1,48 +1,46 @@
-# Cross-platform `execve()` for Go
+# Cross-platform `Exec` for Go
 
-🏃 Use [`syscall.Exec`](https://pkg.go.dev/syscall#Exec) on Unix or an [`execve(2)`-like shim](https://github.com/jcbhmr/go-execreplace/blob/main/execreplace_windows.go) on Windows
+⚡️ \*nix `CmdExt.Exec` but works on Windows
+
+<table align=center><td>
+
+<div>💻 <code>syscall.Exec</code>-like</div>
+
+```go
+goPath, _ := exec.LookPath("go")
+_ = crossexec.CrossExec(goPath, []string{"go", "version"}, nil)
+```
+
+<div>🚀 <code>exec.Cmd</code>-based</div>
+
+```go
+cmd := exec.Command("go", "version")
+// Cross-platform
+_ = (*crossexec.CmdExt)(cmd).CrossExec()
+```
+
+</table>
+
+🐧 Uses [`syscall.Exec`](https://pkg.go.dev/syscall#Exec) on Unix \
+🟦 Emulates process replacement on Windows
 
 ## Installation
 
+![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=Go&logoColor=FFFFFF)
+
 ```sh
-go get github.com/jcbhmr/go-execreplace
+go get github.com/jcbhmr/go-crossexec
 ```
 
 ## Usage
 
-```go
-package main
+![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=Go&logoColor=FFFFFF)
 
-import (
-	"fmt"
-	"log"
-	"os"
-	"os/exec"
-
-	"github.com/jcbhmr/go-execreplace"
-)
-
-func main() {
-	fmt.Println("Hello from before ExecReplace!")
-	goPath, err := exec.LookPath("go")
-	if err != nil {
-		log.Fatalf("LookPath %q failed: %v", "go", err)
-	}
-	execreplace.ExecReplace(goPath, []string{"go", "version"}, os.Environ())
-}
-```
-
-```sh
-go run ./main.go
-```
-
-```
-Hello from before ExecReplace!
-go version go1.25.4 windows/amd64
-```
+[📚 See the docs](https://pkg.go.dev/github.com/jcbhmr/go-crossexec)
 
 ## Development
 
-TODO: Use new `errors.AsType()` when widely available. https://antonz.org/accepted/errors-astype/
+![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=Go&logoColor=FFFFFF)
+![Windows](https://img.shields.io/badge/Windows-00BFFF?style=for-the-badge)
 
-Inspired by [`exec_replace()`](https://docs.rs/cargo-util/latest/cargo_util/struct.ProcessBuilder.html#method.exec_replace) from [`cargo-util`](https://docs.rs/cargo-util/latest/cargo_util/).
+Inspired by [`exec_replace`](https://docs.rs/cargo-util/latest/cargo_util/struct.ProcessBuilder.html#method.exec_replace) from [`cargo-util`](https://docs.rs/cargo-util/latest/cargo_util/).
